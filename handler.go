@@ -31,7 +31,9 @@ func newGzipHandler(level int, options ...Option) *gzipHandler {
 		},
 	}
 	for _, setter := range options {
-		setter(handler.Options)
+		if setter != nil {
+			setter(handler.Options)
+		}
 	}
 	return handler
 }
